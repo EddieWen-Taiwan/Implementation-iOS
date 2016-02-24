@@ -34,16 +34,39 @@
                                     <constraint firstItem="blq-IV-Hxf" firstAttribute="centerX" secondItem="ffG-Pn-m96" secondAttribute="centerX" id="kJT-lU-voS"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2m5-QF-72e">
+                                <rect key="frame" x="0.0" y="120" width="260" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coco Bubble Tea" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bx-wS-9XQ">
+                                        <rect key="frame" x="40" y="10" width="122" height="16"/>
+                                        <fontDescription key="fontDescription" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.59607843137254901" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="260" id="L1Q-di-i3p"/>
+                                    <constraint firstItem="0bx-wS-9XQ" firstAttribute="leading" secondItem="2m5-QF-72e" secondAttribute="leading" constant="40" id="cW6-2S-yds"/>
+                                    <constraint firstItem="0bx-wS-9XQ" firstAttribute="top" secondItem="2m5-QF-72e" secondAttribute="top" constant="10" id="g50-b1-toJ"/>
+                                    <constraint firstAttribute="height" constant="60" id="yl5-RV-XlK"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="2m5-QF-72e" firstAttribute="top" secondItem="ffG-Pn-m96" secondAttribute="bottom" constant="60" id="J2S-Zk-7bV"/>
                             <constraint firstItem="ffG-Pn-m96" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="SrM-uF-o6L"/>
                             <constraint firstItem="ffG-Pn-m96" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="qNd-Bp-DNt"/>
+                            <constraint firstItem="2m5-QF-72e" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ymo-Ez-oIi"/>
                             <constraint firstAttribute="trailing" secondItem="ffG-Pn-m96" secondAttribute="trailing" id="z3h-eg-5U4"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="no_1_View" destination="2m5-QF-72e" id="2bm-Oh-k0A"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
