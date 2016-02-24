@@ -52,12 +52,42 @@
                                     <constraint firstAttribute="height" constant="60" id="yl5-RV-XlK"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3Q-UK-aid">
+                                <rect key="frame" x="0.0" y="240" width="220" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.035294117647058823" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="3Wf-YS-wDB"/>
+                                    <constraint firstAttribute="width" constant="220" id="TpM-Zf-HNZ"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qV3-nW-BvU">
+                                <rect key="frame" x="0.0" y="360" width="180" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.59607843137254901" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="IxN-kk-vtw"/>
+                                    <constraint firstAttribute="width" constant="180" id="mWY-I6-YCs"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a5s-9R-0n7">
+                                <rect key="frame" x="0.0" y="480" width="140" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.035294117649999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="cHX-eH-Er7"/>
+                                    <constraint firstAttribute="width" constant="140" id="mP7-Rb-rLD"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="qV3-nW-BvU" firstAttribute="top" secondItem="F3Q-UK-aid" secondAttribute="bottom" constant="60" id="07k-1W-VxP"/>
+                            <constraint firstItem="a5s-9R-0n7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9ym-cP-ZLI"/>
                             <constraint firstItem="2m5-QF-72e" firstAttribute="top" secondItem="ffG-Pn-m96" secondAttribute="bottom" constant="60" id="J2S-Zk-7bV"/>
+                            <constraint firstItem="F3Q-UK-aid" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LxE-n7-BRU"/>
                             <constraint firstItem="ffG-Pn-m96" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="SrM-uF-o6L"/>
+                            <constraint firstItem="F3Q-UK-aid" firstAttribute="top" secondItem="2m5-QF-72e" secondAttribute="bottom" constant="60" id="jsZ-lG-eij"/>
+                            <constraint firstItem="a5s-9R-0n7" firstAttribute="top" secondItem="qV3-nW-BvU" secondAttribute="bottom" constant="60" id="nbH-5Y-0pz"/>
                             <constraint firstItem="ffG-Pn-m96" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="qNd-Bp-DNt"/>
+                            <constraint firstItem="qV3-nW-BvU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xCH-iB-MoN"/>
                             <constraint firstItem="2m5-QF-72e" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ymo-Ez-oIi"/>
                             <constraint firstAttribute="trailing" secondItem="ffG-Pn-m96" secondAttribute="trailing" id="z3h-eg-5U4"/>
                         </constraints>
@@ -66,6 +96,9 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="no_1_View" destination="2m5-QF-72e" id="2bm-Oh-k0A"/>
+                        <outlet property="no_2_View" destination="F3Q-UK-aid" id="cJn-zo-WvD"/>
+                        <outlet property="no_3_View" destination="qV3-nW-BvU" id="ZYS-jC-fd4"/>
+                        <outlet property="no_4_View" destination="a5s-9R-0n7" id="vhJ-Hh-6CV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
