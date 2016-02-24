@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  Implementation
+//  Steph
 //
 //  Created by Eddie on 2/24/16.
 //  Copyright © 2016 Wen. All rights reserved.
@@ -12,6 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
