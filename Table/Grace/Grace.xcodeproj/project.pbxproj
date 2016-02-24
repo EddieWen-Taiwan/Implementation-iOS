@@ -13,6 +13,7 @@
 		2C4398D51C7DAC270053851B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C4398D41C7DAC270053851B /* Assets.xcassets */; };
 		2C4398D81C7DAC270053851B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4398D61C7DAC270053851B /* LaunchScreen.storyboard */; };
 		2C7C32A81C7DBF27001281DF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7C32A71C7DBF27001281DF /* User.swift */; };
+		2CEFB24E1C7DEFFE0091E513 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEFB24D1C7DEFFE0091E513 /* UserInfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		2C4398D71C7DAC270053851B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C4398D91C7DAC270053851B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C7C32A71C7DBF27001281DF /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2CEFB24D1C7DEFFE0091E513 /* UserInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				2C4398CD1C7DAC270053851B /* AppDelegate.swift */,
 				2C4398CF1C7DAC270053851B /* ViewController.swift */,
 				2C7C32A71C7DBF27001281DF /* User.swift */,
+				2CEFB24D1C7DEFFE0091E513 /* UserInfoView.swift */,
 				2C4398D11C7DAC270053851B /* Main.storyboard */,
 				2C4398D41C7DAC270053851B /* Assets.xcassets */,
 				2C4398D61C7DAC270053851B /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 				2C4398D01C7DAC270053851B /* ViewController.swift in Sources */,
 				2C4398CE1C7DAC270053851B /* AppDelegate.swift in Sources */,
 				2C7C32A81C7DBF27001281DF /* User.swift in Sources */,
+				2CEFB24E1C7DEFFE0091E513 /* UserInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

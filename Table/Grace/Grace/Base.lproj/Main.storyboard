@@ -36,23 +36,13 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2m5-QF-72e">
                                 <rect key="frame" x="0.0" y="120" width="260" height="60"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coco Bubble Tea" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bx-wS-9XQ">
-                                        <rect key="frame" x="40" y="10" width="122" height="16"/>
-                                        <fontDescription key="fontDescription" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="15"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
                                 <color key="backgroundColor" red="1" green="0.59607843137254901" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="L1Q-di-i3p"/>
-                                    <constraint firstItem="0bx-wS-9XQ" firstAttribute="leading" secondItem="2m5-QF-72e" secondAttribute="leading" constant="40" id="cW6-2S-yds"/>
-                                    <constraint firstItem="0bx-wS-9XQ" firstAttribute="top" secondItem="2m5-QF-72e" secondAttribute="top" constant="10" id="g50-b1-toJ"/>
                                     <constraint firstAttribute="height" constant="60" id="yl5-RV-XlK"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3Q-UK-aid">
+                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3Q-UK-aid">
                                 <rect key="frame" x="0.0" y="220" width="220" height="60"/>
                                 <color key="backgroundColor" red="1" green="0.035294117647058823" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
