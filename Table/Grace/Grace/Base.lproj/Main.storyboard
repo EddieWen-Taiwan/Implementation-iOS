@@ -16,7 +16,31 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ffG-Pn-m96">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bubble Tea Leaderboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blq-IV-Hxf">
+                                        <rect key="frame" x="73" y="22" width="175" height="16"/>
+                                        <fontDescription key="fontDescription" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.24313725490196078" green="0.76470588235294112" blue="0.81960784313725488" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="EPb-LK-4Va"/>
+                                    <constraint firstItem="blq-IV-Hxf" firstAttribute="centerY" secondItem="ffG-Pn-m96" secondAttribute="centerY" id="PlP-83-pcb"/>
+                                    <constraint firstItem="blq-IV-Hxf" firstAttribute="centerX" secondItem="ffG-Pn-m96" secondAttribute="centerX" id="kJT-lU-voS"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ffG-Pn-m96" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="SrM-uF-o6L"/>
+                            <constraint firstItem="ffG-Pn-m96" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="qNd-Bp-DNt"/>
+                            <constraint firstAttribute="trailing" secondItem="ffG-Pn-m96" secondAttribute="trailing" id="z3h-eg-5U4"/>
+                        </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
