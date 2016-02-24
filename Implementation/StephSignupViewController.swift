@@ -10,6 +10,9 @@ import UIKit
 
 class StephSignupViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet var scrollView: UIScrollView!
+    @IBOutlet var scrollViewBottomConstraint: NSLayoutConstraint!
+
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var mailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
@@ -21,10 +24,23 @@ class StephSignupViewController: UIViewController, UITextFieldDelegate {
         mailTextField.delegate = self
         passwordTextField.delegate = self
 
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+
         let gradient = makeGradientLayer()
             gradient.frame = view.frame
 
-        view.layer.insertSublayer(gradient, atIndex: 0)
+        scrollView.layer.insertSublayer(gradient, atIndex: 0)
+    }
+
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            scrollViewBottomConstraint.constant = keyboardSize.height - 70
+        }
+    }
+
+    func keyboardWillHide(notification: NSNotification) {
+        scrollViewBottomConstraint.constant = 0
     }
 
     private func makeGradientLayer() -> CAGradientLayer {
