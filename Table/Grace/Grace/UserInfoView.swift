@@ -13,7 +13,7 @@ class UserInfoView: UIView {
     private let thisUser: User
     private let maskColor: UIColor
 
-    init(user: User, maskColor: UIColor) {
+    init(user: User, maskColor: UIColor = UIColor(red: 255/255, green: 152/255, blue: 53/255, alpha: 1)) {
         self.thisUser = user
         self.maskColor = maskColor
         super.init(frame: CGRectMake(30, 10, 200, 40))
@@ -34,17 +34,17 @@ class UserInfoView: UIView {
 
     func addStar() {
         var starNum = thisUser.star
-        let width: CGFloat = 25;
+        let width: CGFloat = 25
 
         while starNum > 0 {
-            let star = UIImageView(frame: CGRectMake(CGFloat(thisUser.star-starNum)*width, 20, width, width))
+            let star = UIImageView(frame: CGRectMake( CGFloat(thisUser.star-starNum)*width, 20, width, width ))
                 star.image = UIImage(named: "star")
 
             starNum--
             if starNum < 0 {
                 let mask = CALayer()
                     mask.backgroundColor = maskColor.CGColor
-                    mask.frame = CGRectMake(CGFloat(1+starNum)*width, 0, CGFloat(abs(starNum))*width, width)
+                    mask.frame = CGRectMake( CGFloat(1+starNum)*width, 0, CGFloat(abs(starNum))*width, width )
 
                 star.layer.addSublayer(mask)
             }
