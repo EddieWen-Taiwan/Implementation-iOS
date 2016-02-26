@@ -14,6 +14,7 @@ class PageContentViewController: UIViewController {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descLabel: UILabel!
 
+    var bgImgName: String?
     var imageName: String?
     var titleText: String?
     var descText: String?
@@ -22,6 +23,9 @@ class PageContentViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
+        if let bgImgName = bgImgName {
+            self.view.backgroundColor = UIColor(patternImage: UIImage(named: bgImgName)!)
+        }
         if let imageName = imageName {
             image.image = UIImage(named: imageName)
         }

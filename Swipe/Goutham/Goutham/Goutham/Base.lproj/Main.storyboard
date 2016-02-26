@@ -27,9 +27,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg1" translatesAutoresizingMaskIntoConstraints="NO" id="v4S-Op-epk">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic1" translatesAutoresizingMaskIntoConstraints="NO" id="eIM-Y2-iOp">
                                 <rect key="frame" x="118" y="172" width="85" height="85"/>
                             </imageView>
@@ -46,18 +43,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.86985085227272729" green="0.86985085227272729" blue="0.86985085227272729" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="eIM-Y2-iOp" firstAttribute="centerY" secondItem="fFt-6P-6Sb" secondAttribute="centerY" constant="-70" id="0iO-Xa-DH2"/>
                             <constraint firstItem="mTR-Xj-Nma" firstAttribute="top" secondItem="DCd-Ou-ePN" secondAttribute="bottom" constant="10" id="7P8-7s-Zmi"/>
-                            <constraint firstItem="v4S-Op-epk" firstAttribute="top" secondItem="FOP-m9-4sN" secondAttribute="bottom" id="Dxy-k9-AAW"/>
                             <constraint firstItem="eIM-Y2-iOp" firstAttribute="centerX" secondItem="fFt-6P-6Sb" secondAttribute="centerX" id="MvU-CB-eNr"/>
-                            <constraint firstAttribute="trailing" secondItem="v4S-Op-epk" secondAttribute="trailing" id="R4A-z5-IhU"/>
                             <constraint firstItem="DCd-Ou-ePN" firstAttribute="top" secondItem="eIM-Y2-iOp" secondAttribute="bottom" constant="30" id="Xd5-Ej-k4T"/>
                             <constraint firstItem="DCd-Ou-ePN" firstAttribute="centerX" secondItem="fFt-6P-6Sb" secondAttribute="centerX" id="o9A-ma-gcw"/>
-                            <constraint firstItem="6Zp-3C-o71" firstAttribute="top" secondItem="v4S-Op-epk" secondAttribute="bottom" id="oM4-mP-mTT"/>
                             <constraint firstItem="mTR-Xj-Nma" firstAttribute="centerX" secondItem="fFt-6P-6Sb" secondAttribute="centerX" id="s8m-fV-rfi"/>
-                            <constraint firstItem="v4S-Op-epk" firstAttribute="leading" secondItem="fFt-6P-6Sb" secondAttribute="leading" id="voh-sz-nK5"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -74,7 +67,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bg1" width="274" height="274"/>
         <image name="pic1" width="85" height="85"/>
     </resources>
 </document>

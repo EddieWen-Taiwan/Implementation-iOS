@@ -13,6 +13,7 @@ class ViewController: UIPageViewController, UIPageViewControllerDataSource, UIPa
     let titleArray = ["STAY", "TRACK", "DO THINGS"]
     let descArray = ["ANONYMOUS", "LOCATION", "MORE FASTER"]
     let imgArray = ["pic1", "pic2", "pic3"]
+    let bgArray = ["bg1", "bg2", "bg3"]
 
     var currentIndex = 0
 
@@ -21,13 +22,13 @@ class ViewController: UIPageViewController, UIPageViewControllerDataSource, UIPa
         // Do any additional setup after loading the view, typically from a nib.
         dataSource = self
 
-        setViewControllers([viewcontrollerAtIndex(0)], direction: .Forward, animated: true, completion: { finish in
-            self.currentIndex++
-        })
+        setViewControllers([viewcontrollerAtIndex(currentIndex)], direction: .Forward, animated: true, completion: nil)
     }
 
     func viewcontrollerAtIndex(index: Int) -> PageContentViewController {
         let contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageContentViewController") as! PageContentViewController
+
+            contentViewController.bgImgName = bgArray[index]
             contentViewController.imageName = imgArray[index]
             contentViewController.titleText = titleArray[index]
             contentViewController.descText = descArray[index]
@@ -36,20 +37,23 @@ class ViewController: UIPageViewController, UIPageViewControllerDataSource, UIPa
     }
 
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        print(currentIndex)
+        print("Left: \(currentIndex)")
         if currentIndex == 0 {
             return nil
         } else {
-            currentIndex--
+            currentIndex -= 1
+            print("Left-AFTER: \(currentIndex)")
             return viewcontrollerAtIndex( currentIndex )
         }
     }
 
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+        print("Right: \(currentIndex)")
         if currentIndex == titleArray.count - 1 {
             return nil
         } else {
-            currentIndex++
+            currentIndex += 1
+            print("Right-AFTER: \(currentIndex)")
             return viewcontrollerAtIndex( currentIndex )
         }
     }
