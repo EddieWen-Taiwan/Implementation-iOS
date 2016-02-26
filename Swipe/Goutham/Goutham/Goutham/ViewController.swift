@@ -25,7 +25,6 @@ class ViewController: UIPageViewController, UIPageViewControllerDataSource, UIPa
 
     override func viewDidLayoutSubviews() {
         for subview in self.view.subviews {
-            print(subview)
             if subview is UIPageControl {
                 subview.backgroundColor = UIColor.clearColor()
                 subview.frame.origin.y = UIScreen.mainScreen().bounds.height-40
@@ -68,6 +67,10 @@ class ViewController: UIPageViewController, UIPageViewControllerDataSource, UIPa
 
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
         return 0
+    }
+
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
 
 }
