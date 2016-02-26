@@ -14,8 +14,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         let settingBtn = SettingButton(frame: CGRectMake(self.view.frame.width/2-50, 300, 100, 100))
+            settingBtn.addTarget(self, action: "test:", forControlEvents: .TouchUpInside)
         self.view.addSubview( settingBtn )
     }
 
+    func test(sender: UIButton) {
+        print("click")
+    }
 }
 

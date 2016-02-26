@@ -33,6 +33,7 @@ class SettingButton: UIButton {
                 self.barArray[0].frame.origin.y = height*self.initValue[0]+5
                 self.barArray[1].frame.origin.y = height*self.initValue[1]+5
                 self.barArray[2].frame.origin.y = height*self.initValue[2]+5
+                self.sendActionsForControlEvents(UIControlEvents.TouchUpInside)
             })
         })
     }
