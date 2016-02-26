@@ -15,14 +15,12 @@ class ViewController: UIPageViewController, UIPageViewControllerDataSource, UIPa
     let imgArray = ["pic1", "pic2", "pic3"]
     let bgArray = ["bg1", "bg2", "bg3"]
 
-    var currentIndex = 0
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         dataSource = self
 
-        setViewControllers([viewcontrollerAtIndex(currentIndex)], direction: .Forward, animated: true, completion: nil)
+        setViewControllers([viewcontrollerAtIndex(0)], direction: .Forward, animated: true, completion: nil)
     }
 
     func viewcontrollerAtIndex(index: Int) -> PageContentViewController {
@@ -32,29 +30,34 @@ class ViewController: UIPageViewController, UIPageViewControllerDataSource, UIPa
             contentViewController.imageName = imgArray[index]
             contentViewController.titleText = titleArray[index]
             contentViewController.descText = descArray[index]
+            contentViewController.pageIndex = index
 
         return contentViewController
     }
 
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        print("Left: \(currentIndex)")
-        if currentIndex == 0 {
-            return nil
+        if let curIndex = (viewController as? PageContentViewController)?.pageIndex {
+            if curIndex == 0 {
+                return nil
+            } else {
+                print("Left-AFTER: \(curIndex-1)")
+                return viewcontrollerAtIndex( curIndex-1 )
+            }
         } else {
-            currentIndex -= 1
-            print("Left-AFTER: \(currentIndex)")
-            return viewcontrollerAtIndex( currentIndex )
+            return nil
         }
     }
 
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        print("Right: \(currentIndex)")
-        if currentIndex == titleArray.count - 1 {
-            return nil
+        if let curIndex = (viewController as? PageContentViewController)?.pageIndex {
+            if curIndex == titleArray.count - 1 {
+                return nil
+            } else {
+                print("Right-AFTER: \(curIndex+1)")
+                return viewcontrollerAtIndex( curIndex+1 )
+            }
         } else {
-            currentIndex += 1
-            print("Right-AFTER: \(currentIndex)")
-            return viewcontrollerAtIndex( currentIndex )
+            return nil
         }
     }
 

@@ -19,6 +19,8 @@ class PageContentViewController: UIViewController {
     var titleText: String?
     var descText: String?
 
+    var pageIndex: Int?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
