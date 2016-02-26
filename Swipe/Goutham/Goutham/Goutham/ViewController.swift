@@ -23,9 +23,20 @@ class ViewController: UIPageViewController, UIPageViewControllerDataSource, UIPa
         setViewControllers([viewcontrollerAtIndex(0)], direction: .Forward, animated: true, completion: nil)
     }
 
+    override func viewDidLayoutSubviews() {
+        for subview in self.view.subviews {
+            print(subview)
+            if subview is UIPageControl {
+                subview.backgroundColor = UIColor.clearColor()
+                subview.frame.origin.y = UIScreen.mainScreen().bounds.height-40
+            }
+        }
+        self.view.frame.size.height = UIScreen.mainScreen().bounds.height+40
+
+    }
+
     func viewcontrollerAtIndex(index: Int) -> PageContentViewController {
         let contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageContentViewController") as! PageContentViewController
-
             contentViewController.bgImgName = bgArray[index]
             contentViewController.imageName = imgArray[index]
             contentViewController.titleText = titleArray[index]
@@ -37,12 +48,7 @@ class ViewController: UIPageViewController, UIPageViewControllerDataSource, UIPa
 
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         if let curIndex = (viewController as? PageContentViewController)?.pageIndex {
-            if curIndex == 0 {
-                return nil
-            } else {
-                print("Left-AFTER: \(curIndex-1)")
-                return viewcontrollerAtIndex( curIndex-1 )
-            }
+            return curIndex == 0 ? nil : viewcontrollerAtIndex( curIndex-1 )
         } else {
             return nil
         }
@@ -50,12 +56,7 @@ class ViewController: UIPageViewController, UIPageViewControllerDataSource, UIPa
 
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         if let curIndex = (viewController as? PageContentViewController)?.pageIndex {
-            if curIndex == titleArray.count - 1 {
-                return nil
-            } else {
-                print("Right-AFTER: \(curIndex+1)")
-                return viewcontrollerAtIndex( curIndex+1 )
-            }
+            return curIndex == titleArray.count-1 ? nil :viewcontrollerAtIndex( curIndex+1 )
         } else {
             return nil
         }
