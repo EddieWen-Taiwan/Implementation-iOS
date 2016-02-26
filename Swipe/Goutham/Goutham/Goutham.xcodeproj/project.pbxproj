@@ -12,6 +12,7 @@
 		2CF8CD1F1C7FD87100CAEB6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CF8CD1D1C7FD87100CAEB6A /* Main.storyboard */; };
 		2CF8CD211C7FD87100CAEB6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CF8CD201C7FD87100CAEB6A /* Assets.xcassets */; };
 		2CF8CD241C7FD87100CAEB6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CF8CD221C7FD87100CAEB6A /* LaunchScreen.storyboard */; };
+		2CF8CD2C1C7FDA3100CAEB6A /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF8CD2B1C7FDA3100CAEB6A /* PageContentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		2CF8CD201C7FD87100CAEB6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CF8CD231C7FD87100CAEB6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CF8CD251C7FD87100CAEB6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CF8CD2B1C7FDA3100CAEB6A /* PageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				2CF8CD191C7FD87100CAEB6A /* AppDelegate.swift */,
 				2CF8CD1B1C7FD87100CAEB6A /* ViewController.swift */,
+				2CF8CD2B1C7FDA3100CAEB6A /* PageContentViewController.swift */,
 				2CF8CD1D1C7FD87100CAEB6A /* Main.storyboard */,
 				2CF8CD201C7FD87100CAEB6A /* Assets.xcassets */,
 				2CF8CD221C7FD87100CAEB6A /* LaunchScreen.storyboard */,
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CF8CD2C1C7FDA3100CAEB6A /* PageContentViewController.swift in Sources */,
 				2CF8CD1C1C7FD87100CAEB6A /* ViewController.swift in Sources */,
 				2CF8CD1A1C7FD87100CAEB6A /* AppDelegate.swift in Sources */,
 			);
