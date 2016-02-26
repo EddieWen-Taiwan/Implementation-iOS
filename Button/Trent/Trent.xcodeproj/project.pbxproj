@@ -12,6 +12,7 @@
 		2CBF397B1C80853A00FC6DF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CBF39791C80853A00FC6DF4 /* Main.storyboard */; };
 		2CBF397D1C80853A00FC6DF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CBF397C1C80853A00FC6DF4 /* Assets.xcassets */; };
 		2CBF39801C80853A00FC6DF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CBF397E1C80853A00FC6DF4 /* LaunchScreen.storyboard */; };
+		2CBF39881C8085DA00FC6DF4 /* SettingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF39871C8085DA00FC6DF4 /* SettingButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		2CBF397C1C80853A00FC6DF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CBF397F1C80853A00FC6DF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CBF39811C80853A00FC6DF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CBF39871C8085DA00FC6DF4 /* SettingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				2CBF39751C80853A00FC6DF4 /* AppDelegate.swift */,
 				2CBF39771C80853A00FC6DF4 /* ViewController.swift */,
+				2CBF39871C8085DA00FC6DF4 /* SettingButton.swift */,
 				2CBF39791C80853A00FC6DF4 /* Main.storyboard */,
 				2CBF397C1C80853A00FC6DF4 /* Assets.xcassets */,
 				2CBF397E1C80853A00FC6DF4 /* LaunchScreen.storyboard */,
@@ -137,6 +140,7 @@
 			files = (
 				2CBF39781C80853A00FC6DF4 /* ViewController.swift in Sources */,
 				2CBF39761C80853A00FC6DF4 /* AppDelegate.swift in Sources */,
+				2CBF39881C8085DA00FC6DF4 /* SettingButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

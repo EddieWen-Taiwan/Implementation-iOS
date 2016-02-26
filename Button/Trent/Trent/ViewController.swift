@@ -13,13 +13,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let settingBtn = SettingButton(frame: CGRectMake(self.view.frame.width/2-50, 300, 100, 100))
+        self.view.addSubview( settingBtn )
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 
