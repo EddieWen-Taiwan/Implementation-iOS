@@ -17,7 +17,7 @@ class SettingButton: UIButton {
         super.init(frame: frame)
         self.layer.borderWidth = frame.width*0.05
         self.layer.borderColor = UIColor.whiteColor().CGColor
-        self.layer.cornerRadius = 10
+        self.layer.cornerRadius = frame.width*0.1
 
         addThreeColumn( frame.width )
     }
