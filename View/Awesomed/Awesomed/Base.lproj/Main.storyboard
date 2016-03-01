@@ -1,25 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Awesomed" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leonardo" translatesAutoresizingMaskIntoConstraints="NO" id="yps-EV-Hd6">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hQ4-eP-1ap">
+                                <rect key="frame" x="0.0" y="284" width="320" height="284"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="yps-EV-Hd6" secondAttribute="trailing" id="4tH-04-oiO"/>
+                            <constraint firstItem="yps-EV-Hd6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="8MR-8k-CYu"/>
+                            <constraint firstAttribute="trailing" secondItem="hQ4-eP-1ap" secondAttribute="trailing" id="RhI-pg-TBv"/>
+                            <constraint firstItem="hQ4-eP-1ap" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.5" id="TFd-VM-pwv"/>
+                            <constraint firstItem="yps-EV-Hd6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Vnb-Uf-vbr"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="yps-EV-Hd6" secondAttribute="bottom" id="Wy1-jU-OgJ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hQ4-eP-1ap" secondAttribute="bottom" id="nK0-NW-sI7"/>
+                            <constraint firstItem="hQ4-eP-1ap" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="prI-Ye-61S"/>
+                        </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="maskView" destination="hQ4-eP-1ap" id="w63-m5-EjA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="leonardo" width="140" height="249"/>
+    </resources>
 </document>
