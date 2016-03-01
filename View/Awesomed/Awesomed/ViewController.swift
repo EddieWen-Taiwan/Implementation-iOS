@@ -15,6 +15,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let mask = makeMaskLayer()
+            mask.frame = CGRectMake(0, 0, maskView.frame.width, maskView.frame.height)
+        maskView.layer.insertSublayer( mask, atIndex: 0 )
+    }
+
+    private func makeMaskLayer() -> CAGradientLayer {
+        let maskLayer = CAGradientLayer()
+            maskLayer.colors = [UIColor.clearColor().CGColor, UIColor.blackColor().CGColor]
+            maskLayer.locations = [0.0, 1.0]
+
+        return maskLayer
     }
 
     override func prefersStatusBarHidden() -> Bool {
