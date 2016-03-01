@@ -1,6 +1,6 @@
 ## Trent Bucknell
 ### Button
 
-![screenshot](Screen Shot.png)
+![screenshot](button.gif)
 
 source: <https://dribbble.com/shots/2505765-Daily-UI-083-Button>
