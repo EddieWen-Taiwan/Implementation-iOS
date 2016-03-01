@@ -27,10 +27,10 @@ class ViewController: UIViewController {
 
         let btnBg = makeButtonGradient()
             btnBg.frame = CGRectMake(0, 0, writeBtn.frame.width, writeBtn.frame.height)
-            btnBg.cornerRadius = 20
+            btnBg.cornerRadius = 25
         writeBtn.layer.addSublayer(btnBg)
-        writeBtn.layer.cornerRadius = 20
-        loveBtn.layer.cornerRadius = 20
+        writeBtn.layer.cornerRadius = 25
+        loveBtn.layer.cornerRadius = 25
         loveBtn.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.7).CGColor
         loveBtn.layer.borderWidth = 1
 
