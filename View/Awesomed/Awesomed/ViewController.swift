@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     @IBOutlet var writeBtn: UIButton!
     @IBOutlet var loveBtn: UIButton!
 
+    @IBOutlet var activeLight: UIView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -31,6 +33,11 @@ class ViewController: UIViewController {
         loveBtn.layer.cornerRadius = 20
         loveBtn.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.7).CGColor
         loveBtn.layer.borderWidth = 1
+
+        activeLight.backgroundColor = UIColor.clearColor()
+        activeLight.layer.cornerRadius = 3
+        activeLight.layer.borderWidth = 1
+        activeLight.layer.borderColor = UIColor(red: 155/255, green: 1, blue: 150/255, alpha: 1).CGColor
     }
 
     private func makeButtonGradient() -> CAGradientLayer {
@@ -48,7 +55,7 @@ class ViewController: UIViewController {
 
     private func makeMaskLayer() -> CAGradientLayer {
         let maskLayer = CAGradientLayer()
-            maskLayer.colors = [UIColor.clearColor().CGColor, UIColor(red: 0, green: 0, blue: 0, alpha: 0.9).CGColor]
+            maskLayer.colors = [UIColor.clearColor().CGColor, UIColor.blackColor().CGColor]
             maskLayer.locations = [0, 1]
 
         return maskLayer
