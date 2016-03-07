@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15B42" minimumToolsVersion="Xcode 7.0">
-    <entity name="ToDo" syncable="YES"/>
+    <entity name="ToDo" syncable="YES">
+        <attribute name="checked" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="task" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="ToDo" positionX="-63" positionY="-18" width="128" height="45"/>
+        <element name="ToDo" positionX="-63" positionY="-18" width="128" height="75"/>
     </elements>
 </model>
