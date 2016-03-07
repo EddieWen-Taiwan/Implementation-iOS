@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C1B43431C8D731A0061B97A /* TaskTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B43421C8D731A0061B97A /* TaskTableCell.swift */; };
 		2C3ABF0C1C8D5C7C00614EF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3ABF0B1C8D5C7C00614EF9 /* AppDelegate.swift */; };
 		2C3ABF0E1C8D5C7C00614EF9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3ABF0D1C8D5C7C00614EF9 /* ViewController.swift */; };
 		2C3ABF111C8D5C7C00614EF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C3ABF0F1C8D5C7C00614EF9 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C1B43421C8D731A0061B97A /* TaskTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTableCell.swift; sourceTree = "<group>"; };
 		2C3ABF081C8D5C7C00614EF9 /* Goutham.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Goutham.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C3ABF0B1C8D5C7C00614EF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C3ABF0D1C8D5C7C00614EF9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				2C3ABF0B1C8D5C7C00614EF9 /* AppDelegate.swift */,
 				2C3ABF0D1C8D5C7C00614EF9 /* ViewController.swift */,
+				2C1B43421C8D731A0061B97A /* TaskTableCell.swift */,
 				2C3ABF0F1C8D5C7C00614EF9 /* Main.storyboard */,
 				2C3ABF121C8D5C7C00614EF9 /* Assets.xcassets */,
 				2C3ABF141C8D5C7C00614EF9 /* LaunchScreen.storyboard */,
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C1B43431C8D731A0061B97A /* TaskTableCell.swift in Sources */,
 				2C3ABF0E1C8D5C7C00614EF9 /* ViewController.swift in Sources */,
 				2C3ABF0C1C8D5C7C00614EF9 /* AppDelegate.swift in Sources */,
 			);
@@ -284,6 +288,7 @@
 				2C3ABF1C1C8D5C7C00614EF9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
