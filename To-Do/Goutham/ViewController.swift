@@ -23,8 +23,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         newTaskButton.layer.cornerRadius = 30
     }
 
-    override func prefersStatusBarHidden() -> Bool {
-        return true
+    @IBAction func addNewTask(sender: AnyObject) {
+        let newTaskController = UIAlertController(title: "New Task", message: "Add a new to-do task", preferredStyle: .Alert)
+        let ok = UIAlertAction(title: "Ok", style: .Default, handler: { action -> Void in
+            if let textfield = newTaskController.textFields {
+                if textfield[0].text != "" {
+                    let newTodo = textfield[0].text!
+                    print(newTodo)
+                } else {
+                    print("nothing")
+                }
+            }
+        })
+        let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        newTaskController.addAction(ok)
+        newTaskController.addAction(cancel)
+        newTaskController.addTextFieldWithConfigurationHandler{ (textField) -> Void in
+            textField.placeholder = "Enter your next ToDo"
+        }
+        self.presentViewController(newTaskController, animated: true, completion: nil)
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -45,5 +62,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func handleTaskStatus(sender: UIButton) {
         sender.setImage(UIImage(named: "checked"), forState: .Normal)
     }
+
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+
 }
 
