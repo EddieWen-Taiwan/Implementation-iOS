@@ -57,16 +57,41 @@
                                     <constraint firstAttribute="height" constant="58" id="lhL-hQ-tr7"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cy7-UN-5Gq">
+                                <rect key="frame" x="130" y="488" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.31372549019607843" green="0.8901960784313725" blue="0.64313725490196072" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="61a-ks-Ciy"/>
+                                    <constraint firstAttribute="width" constant="60" id="ihY-pp-toJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="36"/>
+                                <state key="normal" title="+">
+                                    <color key="titleColor" red="0.27450980392156865" green="0.74509803921568629" blue="0.54509803921568623" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                        <size key="value" width="2" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="oUw-qF-zR4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="cOp-5e-dYT"/>
                             <constraint firstItem="oUw-qF-zR4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="hOn-Xz-mAh"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Cy7-UN-5Gq" secondAttribute="bottom" constant="20" id="jcW-vj-spZ"/>
+                            <constraint firstItem="Cy7-UN-5Gq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pEK-b7-cGb"/>
                             <constraint firstAttribute="trailing" secondItem="oUw-qF-zR4" secondAttribute="trailing" constant="20" id="uqc-Q8-VrT"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="newTaskButton" destination="Cy7-UN-5Gq" id="NCA-Ui-SJJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
