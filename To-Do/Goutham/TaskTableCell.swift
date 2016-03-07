@@ -10,6 +10,8 @@ import UIKit
 
 class TaskTableCell: UITableViewCell {
 
+    @IBOutlet var checkButton: UIButton!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -57,17 +58,42 @@
                                     <constraint firstAttribute="height" constant="58" id="lhL-hQ-tr7"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N0C-wH-eqv">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N0C-wH-eqv">
                                 <rect key="frame" x="20" y="98" width="280" height="410"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" id="zOy-t2-MXa" customClass="TaskTableCell" customModule="Goutham" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="280" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="taskCell" id="zOy-t2-MXa" customClass="TaskTableCell" customModule="Goutham" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="280" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zOy-t2-MXa" id="PdI-Js-W07">
-                                            <rect key="frame" x="0.0" y="0.0" width="280" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buy new sweetshirt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTk-8A-Il0">
+                                                    <rect key="frame" x="10" y="20" width="152" height="19"/>
+                                                    <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="16"/>
+                                                    <color key="textColor" red="0.74117647058823533" green="0.75294117647058822" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPc-NJ-tVv">
+                                                    <rect key="frame" x="232" y="15" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="MZ6-ha-cpT"/>
+                                                        <constraint firstAttribute="width" constant="30" id="anr-ZF-LiH"/>
+                                                    </constraints>
+                                                    <state key="normal" image="unchecked"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="wPc-NJ-tVv" secondAttribute="trailing" constant="10" id="1D5-Hq-QRs"/>
+                                                <constraint firstItem="ZTk-8A-Il0" firstAttribute="leading" secondItem="PdI-Js-W07" secondAttribute="leading" constant="10" id="IPK-Xy-8pS"/>
+                                                <constraint firstItem="ZTk-8A-Il0" firstAttribute="centerY" secondItem="PdI-Js-W07" secondAttribute="centerY" id="V0C-CE-twC"/>
+                                                <constraint firstItem="wPc-NJ-tVv" firstAttribute="centerY" secondItem="PdI-Js-W07" secondAttribute="centerY" id="bNs-6w-frM"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="checkButton" destination="wPc-NJ-tVv" id="P3Z-kK-INE"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -117,4 +143,7 @@
             <point key="canvasLocation" x="280" y="317"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="unchecked" width="29" height="29"/>
+    </resources>
 </document>

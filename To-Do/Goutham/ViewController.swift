@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var tableView: UITableView!
+
     @IBOutlet var newTaskButton: UIButton!
 
     override func viewDidLoad() {
@@ -36,8 +37,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath) as! TaskTableCell
+
+        cell.checkButton.addTarget(self, action: "handleTaskStatus:", forControlEvents: .TouchUpInside)
         return cell
     }
 
+    func handleTaskStatus(sender: UIButton) {
+        sender.setImage(UIImage(named: "checked"), forState: .Normal)
+    }
 }
 
