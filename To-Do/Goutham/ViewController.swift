@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var tableView: UITableView!
 
     @IBOutlet var newTaskButton: UIButton!
+
+    let moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +33,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 if textfield[0].text != "" {
                     let newTodo = textfield[0].text!
                     print(newTodo)
-                } else {
-                    print("nothing")
+                    let todo = NSEntityDescription.insertNewObjectForEntityForName("ToDo", inManagedObjectContext: self.moc) as! ToDo
+                        todo.task = newTodo
+                        todo.checked = false
+
+                    do {
+                        try self.moc.save()
+                    } catch {
+                        fatalError("Failture : \(error)")
+                    }
                 }
             }
         })
