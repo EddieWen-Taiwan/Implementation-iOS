@@ -24,6 +24,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.dataSource = self
 
         newTaskButton.layer.cornerRadius = 30
+        getAllTask()
+    }
+
+    func getAllTask() {
+        let query = NSFetchRequest(entityName: "ToDo")
+
+        do {
+            let results = try moc.executeFetchRequest(query) as! [ToDo]
+            for result in results {
+                print(result)
+                print("TASK : \(result.task) & CHECKED : \(result.checked)")
+            }
+        } catch {
+            fatalError("Oops! \(error)")
+        }
     }
 
     @IBAction func addNewTask(sender: AnyObject) {
