@@ -14,13 +14,63 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oUw-qF-zR4">
+                                <rect key="frame" x="20" y="30" width="280" height="58"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07j-gh-nZZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="58"/>
+                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="50"/>
+                                        <color key="textColor" red="0.38039215686274508" green="0.39215686274509803" blue="0.45098039215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JAN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="67u-OI-Hpu">
+                                        <rect key="frame" x="70" y="10" width="33" height="19"/>
+                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="16"/>
+                                        <color key="textColor" red="0.38039215686274508" green="0.39215686274509803" blue="0.45098039215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ev3-e8-JY0">
+                                        <rect key="frame" x="70" y="32" width="36" height="20"/>
+                                        <fontDescription key="fontDescription" name="ArialHebrew" family="Arial Hebrew" pointSize="18"/>
+                                        <color key="textColor" red="0.38039215686274508" green="0.39215686274509803" blue="0.45098039215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TUESDAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfo-bH-2z2">
+                                        <rect key="frame" x="204" y="20" width="76" height="19"/>
+                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="16"/>
+                                        <color key="textColor" red="0.38039215686274508" green="0.39215686274509803" blue="0.45098039215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="67u-OI-Hpu" firstAttribute="leading" secondItem="07j-gh-nZZ" secondAttribute="trailing" constant="10" id="1GV-m1-JHg"/>
+                                    <constraint firstItem="67u-OI-Hpu" firstAttribute="top" secondItem="oUw-qF-zR4" secondAttribute="top" constant="10" id="32t-Ke-T40"/>
+                                    <constraint firstItem="Lfo-bH-2z2" firstAttribute="centerY" secondItem="oUw-qF-zR4" secondAttribute="centerY" id="B0p-c4-wDK"/>
+                                    <constraint firstItem="07j-gh-nZZ" firstAttribute="leading" secondItem="oUw-qF-zR4" secondAttribute="leading" id="GI0-MP-Aak"/>
+                                    <constraint firstItem="07j-gh-nZZ" firstAttribute="top" secondItem="oUw-qF-zR4" secondAttribute="top" id="Q3c-H6-xgv"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ev3-e8-JY0" secondAttribute="bottom" constant="6" id="aiD-Gb-6Ka"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lfo-bH-2z2" secondAttribute="trailing" id="at3-D5-BNG"/>
+                                    <constraint firstItem="Ev3-e8-JY0" firstAttribute="leading" secondItem="07j-gh-nZZ" secondAttribute="trailing" constant="10" id="jpd-Cl-XDo"/>
+                                    <constraint firstAttribute="height" constant="58" id="lhL-hQ-tr7"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oUw-qF-zR4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="cOp-5e-dYT"/>
+                            <constraint firstItem="oUw-qF-zR4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="hOn-Xz-mAh"/>
+                            <constraint firstAttribute="trailing" secondItem="oUw-qF-zR4" secondAttribute="trailing" constant="20" id="uqc-Q8-VrT"/>
+                        </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="280" y="317"/>
         </scene>
     </scenes>
 </document>
