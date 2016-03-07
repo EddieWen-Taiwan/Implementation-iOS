@@ -10,6 +10,7 @@ import UIKit
 
 class TaskTableCell: UITableViewCell {
 
+    @IBOutlet var taskLabel: UILabel!
     @IBOutlet var checkButton: UIButton!
 
     override func awakeFromNib() {

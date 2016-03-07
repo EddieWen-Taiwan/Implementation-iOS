@@ -16,6 +16,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet var newTaskButton: UIButton!
 
     let moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    var taskList = [ToDo]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +32,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let query = NSFetchRequest(entityName: "ToDo")
 
         do {
-            let results = try moc.executeFetchRequest(query) as! [ToDo]
-            for result in results {
-                print(result)
-                print("TASK : \(result.task) & CHECKED : \(result.checked)")
-            }
+            taskList = try moc.executeFetchRequest(query) as! [ToDo]
+            tableView.reloadData()
         } catch {
             fatalError("Oops! \(error)")
         }
@@ -46,14 +44,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let ok = UIAlertAction(title: "Ok", style: .Default, handler: { action -> Void in
             if let textfield = newTaskController.textFields {
                 if textfield[0].text != "" {
-                    let newTodo = textfield[0].text!
-                    print(newTodo)
                     let todo = NSEntityDescription.insertNewObjectForEntityForName("ToDo", inManagedObjectContext: self.moc) as! ToDo
-                        todo.task = newTodo
+                        todo.task = textfield[0].text!
                         todo.checked = false
 
                     do {
                         try self.moc.save()
+                        self.getAllTask()
                     } catch {
                         fatalError("Failture : \(error)")
                     }
@@ -74,13 +71,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return taskList.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath) as! TaskTableCell
 
+        cell.taskLabel.text = taskList[indexPath.row].task
+        cell.checkButton.setImage(UIImage(named: taskList[indexPath.row].checked == true ? "checked" : "unchecked"), forState: .Normal)
         cell.checkButton.addTarget(self, action: "handleTaskStatus:", forControlEvents: .TouchUpInside)
+
         return cell
     }
 

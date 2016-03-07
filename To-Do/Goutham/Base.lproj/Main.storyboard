@@ -93,6 +93,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="checkButton" destination="wPc-NJ-tVv" id="P3Z-kK-INE"/>
+                                            <outlet property="taskLabel" destination="ZTk-8A-Il0" id="C1P-xE-WWp"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
