@@ -86,18 +86,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func handleTaskStatus(sender: UIButton) {
-//        sender.setImage(UIImage(named: "checked"), forState: .Normal)
-        print(sender.tag)
         let cell = tableView.cellForRowAtIndexPath( NSIndexPath(forRow: sender.tag, inSection: 0) ) as! TaskTableCell
-        print(cell.taskLabel.text)
 
         let updateQuery = NSFetchRequest(entityName: "ToDo")
             updateQuery.predicate = NSPredicate(format: "task = %@", cell.taskLabel.text!)
+
         do {
             let result = try moc.executeFetchRequest(updateQuery) as! [ToDo]
 
-            if result.count > 0 {
-                print(result[0])
+            if let result: ToDo = result[0] {
+                if result.checked == true {
+                    result.checked = false
+                    sender.setImage(UIImage(named: "unchecked"), forState: .Normal)
+                } else {
+                    result.checked = true
+                    sender.setImage(UIImage(named: "checked"), forState: .Normal)
+                }
+                try moc.save()
             }
         } catch {
             fatalError("Update fail : \(error)")
