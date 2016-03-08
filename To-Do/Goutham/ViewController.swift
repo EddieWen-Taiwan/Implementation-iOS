@@ -88,6 +88,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
 
+    func deleteTask( index: NSIndexPath ) {
+        let cell = tableView.cellForRowAtIndexPath( index ) as! TaskTableCell
+        let query = NSFetchRequest(entityName: "ToDo")
+            query.predicate = NSPredicate(format: "task = %@", cell.taskLabel.text!)
+        do {
+            let result = try moc.executeFetchRequest(query) as! [ToDo]
+
+            if let result: ToDo = result[0] {
+                moc.deleteObject(result)
+
+                try moc.save()
+                getAllTask()
+            }
+        } catch {
+            fatalError("Delete fail : \(error)")
+        }
+    }
+
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -105,6 +123,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.checkButton.tag = indexPath.row
 
         return cell
+    }
+
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            deleteTask( indexPath )
+        }
     }
 
     override func prefersStatusBarHidden() -> Bool {
