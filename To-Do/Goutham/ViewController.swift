@@ -122,7 +122,77 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     ***/
 
     func longPressOnTableView(gestureRecognizer: UIGestureRecognizer) {
-        print("How long~~~~")
+        let longPress = gestureRecognizer as! UILongPressGestureRecognizer
+        let pressState = longPress.state
+        var locationPoint = longPress.locationInView(tableView)
+
+        struct My {
+            static var cellSnapshot: UIView? = nil
+            static var initialIndexPath: NSIndexPath? = nil
+        }
+
+        if let cellIndexPath = tableView.indexPathForRowAtPoint(locationPoint) {
+            switch pressState {
+            case UIGestureRecognizerState.Began:
+                My.initialIndexPath = cellIndexPath
+                let thisCell = tableView.cellForRowAtIndexPath(cellIndexPath) as UITableViewCell!
+                My.cellSnapshot = takeSnapshotOfCell(thisCell)
+                var center = thisCell.center
+                My.cellSnapshot?.center = center
+                My.cellSnapshot?.alpha = 0
+                tableView.addSubview( My.cellSnapshot! )
+                UIView.animateWithDuration( 0.25, animations: {
+                    center.y = locationPoint.y
+                    My.cellSnapshot!.center = center
+                    My.cellSnapshot!.transform = CGAffineTransformMakeScale(1.05, 1.05)
+                    My.cellSnapshot!.alpha = 0.98
+                    thisCell.alpha = 0.0
+                }, completion: { finished -> Void in
+                    if finished {
+                        thisCell.hidden = true
+                    }
+                })
+            case UIGestureRecognizerState.Changed:
+                My.cellSnapshot?.center.y = locationPoint.y
+                if cellIndexPath != My.initialIndexPath {
+                    swap( &taskList[cellIndexPath.row], &taskList[My.initialIndexPath!.row] )
+                    tableView.moveRowAtIndexPath(My.initialIndexPath!, toIndexPath: cellIndexPath)
+                    My.initialIndexPath = cellIndexPath
+                }
+            default:
+                let cell = tableView.cellForRowAtIndexPath(cellIndexPath) as! TaskTableCell
+                cell.hidden = false
+                cell.alpha = 0
+                UIView.animateWithDuration( 0.25, animations: {
+                    My.cellSnapshot?.center = cell.center
+                    My.cellSnapshot?.transform = CGAffineTransformIdentity
+                    My.cellSnapshot?.alpha = 0
+                    cell.alpha = 1
+                }, completion: { finish in
+                    if finish {
+                        My.initialIndexPath = nil
+                        My.cellSnapshot?.removeFromSuperview()
+                        My.cellSnapshot = nil
+                    }
+                })
+            }
+        }
+    }
+
+    func takeSnapshotOfCell(cellView: UIView) -> UIView {
+        UIGraphicsBeginImageContextWithOptions(cellView.bounds.size, false, 0.0)
+        cellView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext() as UIImage
+        UIGraphicsEndImageContext()
+
+        let cellSnapshot : UIView = UIImageView(image: image)
+            cellSnapshot.layer.masksToBounds = false
+            cellSnapshot.layer.cornerRadius = 0.0
+            cellSnapshot.layer.shadowOffset = CGSizeMake(-5.0, 0.0)
+            cellSnapshot.layer.shadowRadius = 5.0
+            cellSnapshot.layer.shadowOpacity = 0.4
+
+        return cellSnapshot
     }
 
     /***
