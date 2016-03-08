@@ -13,6 +13,9 @@
 		2C3ABF111C8D5C7C00614EF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C3ABF0F1C8D5C7C00614EF9 /* Main.storyboard */; };
 		2C3ABF131C8D5C7C00614EF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C3ABF121C8D5C7C00614EF9 /* Assets.xcassets */; };
 		2C3ABF161C8D5C7C00614EF9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C3ABF141C8D5C7C00614EF9 /* LaunchScreen.storyboard */; };
+		2CF1C9B11C8DA5FB00C0753B /* Goutham.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2CF1C9AF1C8DA5FB00C0753B /* Goutham.xcdatamodeld */; };
+		2CF1C9DB1C8DA8D500C0753B /* ToDo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF1C9D91C8DA8D500C0753B /* ToDo+CoreDataProperties.swift */; };
+		2CF1C9DC1C8DA8D500C0753B /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF1C9DA1C8DA8D500C0753B /* ToDo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		2C3ABF121C8D5C7C00614EF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C3ABF151C8D5C7C00614EF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C3ABF171C8D5C7C00614EF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CF1C9B01C8DA5FB00C0753B /* Goutham.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Goutham.xcdatamodel; sourceTree = "<group>"; };
+		2CF1C9D91C8DA8D500C0753B /* ToDo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ToDo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2CF1C9DA1C8DA8D500C0753B /* ToDo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +46,8 @@
 		2C3ABEFF1C8D5C7C00614EF9 = {
 			isa = PBXGroup;
 			children = (
+				2CF1C9D91C8DA8D500C0753B /* ToDo+CoreDataProperties.swift */,
+				2CF1C9DA1C8DA8D500C0753B /* ToDo.swift */,
 				2C3ABF0A1C8D5C7C00614EF9 /* Goutham */,
 				2C3ABF091C8D5C7C00614EF9 /* Products */,
 			);
@@ -59,6 +67,7 @@
 				2C3ABF0B1C8D5C7C00614EF9 /* AppDelegate.swift */,
 				2C3ABF0D1C8D5C7C00614EF9 /* ViewController.swift */,
 				2C1B43421C8D731A0061B97A /* TaskTableCell.swift */,
+				2CF1C9AF1C8DA5FB00C0753B /* Goutham.xcdatamodeld */,
 				2C3ABF0F1C8D5C7C00614EF9 /* Main.storyboard */,
 				2C3ABF121C8D5C7C00614EF9 /* Assets.xcassets */,
 				2C3ABF141C8D5C7C00614EF9 /* LaunchScreen.storyboard */,
@@ -141,6 +150,9 @@
 				2C1B43431C8D731A0061B97A /* TaskTableCell.swift in Sources */,
 				2C3ABF0E1C8D5C7C00614EF9 /* ViewController.swift in Sources */,
 				2C3ABF0C1C8D5C7C00614EF9 /* AppDelegate.swift in Sources */,
+				2CF1C9DC1C8DA8D500C0753B /* ToDo.swift in Sources */,
+				2CF1C9DB1C8DA8D500C0753B /* ToDo+CoreDataProperties.swift in Sources */,
+				2CF1C9B11C8DA5FB00C0753B /* Goutham.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,10 +263,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Goutham/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Eddie.Goutham;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -262,6 +276,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Goutham/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Eddie.Goutham;
@@ -291,6 +306,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2CF1C9AF1C8DA5FB00C0753B /* Goutham.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2CF1C9B01C8DA5FB00C0753B /* Goutham.xcdatamodel */,
+			);
+			currentVersion = 2CF1C9B01C8DA5FB00C0753B /* Goutham.xcdatamodel */;
+			path = Goutham.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2C3ABF001C8D5C7C00614EF9 /* Project object */;
 }

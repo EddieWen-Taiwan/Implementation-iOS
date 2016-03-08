@@ -93,6 +93,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="checkButton" destination="wPc-NJ-tVv" id="P3Z-kK-INE"/>
+                                            <outlet property="taskLabel" destination="ZTk-8A-Il0" id="C1P-xE-WWp"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -116,6 +117,9 @@
                                         <real key="value" value="0.29999999999999999"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="showNewTaskAlert:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NX9-go-TBb"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
