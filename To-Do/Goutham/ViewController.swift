@@ -11,6 +11,11 @@ import CoreData
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    /***
+     *  Core Data
+     *  TableView and Cell
+    ***/
+
     let moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     var taskList = [ToDo]()
 
