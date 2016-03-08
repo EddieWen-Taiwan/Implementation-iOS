@@ -42,10 +42,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBAction func showNewTaskAlert(sender: AnyObject) {
         let newTaskController = UIAlertController(title: "New Task", message: "Add a new to-do task", preferredStyle: .Alert)
         let ok = UIAlertAction(title: "Ok", style: .Default, handler: { action -> Void in
-            if let textfield = newTaskController.textFields {
-                if textfield[0].text != "" {
-                    self.addNewTask( textfield[0].text! )
-                }
+            if let textfield = newTaskController.textFields where textfield[0].text != "" {
+                self.addNewTask( textfield[0].text! )
             }
         })
         let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
