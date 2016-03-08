@@ -95,13 +95,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let result = try moc.executeFetchRequest(updateQuery) as! [ToDo]
 
             if let result: ToDo = result[0] {
-                if result.checked == true {
-                    result.checked = false
-                    sender.setImage(UIImage(named: "unchecked"), forState: .Normal)
-                } else {
-                    result.checked = true
-                    sender.setImage(UIImage(named: "checked"), forState: .Normal)
-                }
+                sender.setImage(UIImage(named: result.checked == true ? "unchecked" : "checked"), forState: .Normal)
+                result.checked = result.checked == true ? false : true
+
                 try moc.save()
             }
         } catch {
