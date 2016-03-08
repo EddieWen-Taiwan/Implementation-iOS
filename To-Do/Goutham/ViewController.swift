@@ -11,14 +11,6 @@ import CoreData
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet var yearLabel: UILabel!
-    @IBOutlet var monthLabel: UILabel!
-    @IBOutlet var dateLabel: UILabel!
-    @IBOutlet var dayLabel: UILabel!
-
-    @IBOutlet var tableView: UITableView!
-    @IBOutlet var newTaskButton: UIButton!
-
     let moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     var taskList = [ToDo]()
 
@@ -34,20 +26,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         setTodayInfo()
     }
 
-    func setTodayInfo() {
-        let today = NSDate()
-        let calendar = NSCalendar.currentCalendar()
-            calendar.timeZone = NSTimeZone.localTimeZone()
-        let dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "yyyy/MMM/dd/EEEE"
-        let dateArray = dateFormatter.stringFromDate(today).characters.split{ $0 == "/" }.map(String.init)
-
-        yearLabel.text = dateArray[0]
-        monthLabel.text = dateArray[1].uppercaseString
-        dateLabel.text = dateArray[2]
-        dayLabel.text = dateArray[3].uppercaseString
-    }
-
     func getAllTask(add: Bool = false) {
         let query = NSFetchRequest(entityName: "ToDo")
 
@@ -60,35 +38,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         } catch {
             fatalError("Oops! \(error)")
-        }
-    }
-
-    @IBAction func showNewTaskAlert(sender: AnyObject) {
-        let newTaskController = UIAlertController(title: "New Task", message: "Add a new to-do task", preferredStyle: .Alert)
-        let ok = UIAlertAction(title: "Ok", style: .Default, handler: { action -> Void in
-            if let textfield = newTaskController.textFields where textfield[0].text != "" {
-                self.addNewTask( textfield[0].text! )
-            }
-        })
-        let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-        newTaskController.addAction(ok)
-        newTaskController.addAction(cancel)
-        newTaskController.addTextFieldWithConfigurationHandler{ textField -> Void in
-            textField.placeholder = "Enter your next ToDo"
-        }
-        self.presentViewController(newTaskController, animated: true, completion: nil)
-    }
-
-    func addNewTask( newTask: String ) {
-        let todo = NSEntityDescription.insertNewObjectForEntityForName("ToDo", inManagedObjectContext: self.moc) as! ToDo
-            todo.task = newTask
-            todo.checked = false
-
-        do {
-            try self.moc.save()
-            getAllTask(true)
-        } catch {
-            fatalError("Failture : \(error)")
         }
     }
 
@@ -157,6 +106,65 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+
+    /***
+     *   Today Info
+    ***/
+
+    @IBOutlet var yearLabel: UILabel!
+    @IBOutlet var monthLabel: UILabel!
+    @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var dayLabel: UILabel!
+
+    func setTodayInfo() {
+        let today = NSDate()
+        let calendar = NSCalendar.currentCalendar()
+        calendar.timeZone = NSTimeZone.localTimeZone()
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy/MMM/dd/EEEE"
+        let dateArray = dateFormatter.stringFromDate(today).characters.split{ $0 == "/" }.map(String.init)
+
+        yearLabel.text = dateArray[0]
+        monthLabel.text = dateArray[1].uppercaseString
+        dateLabel.text = dateArray[2]
+        dayLabel.text = dateArray[3].uppercaseString
+    }
+
+    /***
+     *  Add New ToDo Task
+    ***/
+
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var newTaskButton: UIButton!
+
+    @IBAction func showNewTaskAlert(sender: AnyObject) {
+        let newTaskController = UIAlertController(title: "New Task", message: "Add a new to-do task", preferredStyle: .Alert)
+        let ok = UIAlertAction(title: "Ok", style: .Default, handler: { action -> Void in
+            if let textfield = newTaskController.textFields where textfield[0].text != "" {
+                self.addNewTask( textfield[0].text! )
+            }
+        })
+        let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        newTaskController.addAction(ok)
+        newTaskController.addAction(cancel)
+        newTaskController.addTextFieldWithConfigurationHandler{ textField -> Void in
+            textField.placeholder = "Enter your next ToDo"
+        }
+        self.presentViewController(newTaskController, animated: true, completion: nil)
+    }
+
+    func addNewTask( newTask: String ) {
+        let todo = NSEntityDescription.insertNewObjectForEntityForName("ToDo", inManagedObjectContext: self.moc) as! ToDo
+        todo.task = newTask
+        todo.checked = false
+
+        do {
+            try self.moc.save()
+            getAllTask(true)
+        } catch {
+            fatalError("Failture : \(error)")
+        }
     }
 
 }
