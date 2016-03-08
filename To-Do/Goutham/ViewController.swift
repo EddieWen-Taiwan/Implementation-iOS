@@ -39,21 +39,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
 
-    @IBAction func addNewTask(sender: AnyObject) {
+    @IBAction func showNewTaskAlert(sender: AnyObject) {
         let newTaskController = UIAlertController(title: "New Task", message: "Add a new to-do task", preferredStyle: .Alert)
         let ok = UIAlertAction(title: "Ok", style: .Default, handler: { action -> Void in
             if let textfield = newTaskController.textFields {
                 if textfield[0].text != "" {
-                    let todo = NSEntityDescription.insertNewObjectForEntityForName("ToDo", inManagedObjectContext: self.moc) as! ToDo
-                        todo.task = textfield[0].text!
-                        todo.checked = false
-
-                    do {
-                        try self.moc.save()
-                        self.getAllTask()
-                    } catch {
-                        fatalError("Failture : \(error)")
-                    }
+                    self.addNewTask( textfield[0].text! )
                 }
             }
         })
@@ -64,6 +55,39 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             textField.placeholder = "Enter your next ToDo"
         }
         self.presentViewController(newTaskController, animated: true, completion: nil)
+    }
+
+    func addNewTask( newTask: String ) {
+        let todo = NSEntityDescription.insertNewObjectForEntityForName("ToDo", inManagedObjectContext: self.moc) as! ToDo
+            todo.task = newTask
+            todo.checked = false
+
+        do {
+            try self.moc.save()
+            self.getAllTask()
+        } catch {
+            fatalError("Failture : \(error)")
+        }
+    }
+
+    func handleTaskStatus(sender: UIButton) {
+        let cell = tableView.cellForRowAtIndexPath( NSIndexPath(forRow: sender.tag, inSection: 0) ) as! TaskTableCell
+
+        let updateQuery = NSFetchRequest(entityName: "ToDo")
+        updateQuery.predicate = NSPredicate(format: "task = %@", cell.taskLabel.text!)
+
+        do {
+            let result = try moc.executeFetchRequest(updateQuery) as! [ToDo]
+
+            if let result: ToDo = result[0] {
+                sender.setImage(UIImage(named: result.checked == true ? "unchecked" : "checked"), forState: .Normal)
+                result.checked = result.checked == true ? false : true
+
+                try moc.save()
+            }
+        } catch {
+            fatalError("Update fail : \(error)")
+        }
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -83,26 +107,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.checkButton.tag = indexPath.row
 
         return cell
-    }
-
-    func handleTaskStatus(sender: UIButton) {
-        let cell = tableView.cellForRowAtIndexPath( NSIndexPath(forRow: sender.tag, inSection: 0) ) as! TaskTableCell
-
-        let updateQuery = NSFetchRequest(entityName: "ToDo")
-            updateQuery.predicate = NSPredicate(format: "task = %@", cell.taskLabel.text!)
-
-        do {
-            let result = try moc.executeFetchRequest(updateQuery) as! [ToDo]
-
-            if let result: ToDo = result[0] {
-                sender.setImage(UIImage(named: result.checked == true ? "unchecked" : "checked"), forState: .Normal)
-                result.checked = result.checked == true ? false : true
-
-                try moc.save()
-            }
-        } catch {
-            fatalError("Update fail : \(error)")
-        }
     }
 
     override func prefersStatusBarHidden() -> Bool {

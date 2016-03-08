@@ -118,7 +118,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="addNewTask:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P3F-83-S5e"/>
+                                    <action selector="showNewTaskAlert:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NX9-go-TBb"/>
                                 </connections>
                             </button>
                         </subviews>
