@@ -80,12 +80,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.taskLabel.text = taskList[indexPath.row].task
         cell.checkButton.setImage(UIImage(named: taskList[indexPath.row].checked == true ? "checked" : "unchecked"), forState: .Normal)
         cell.checkButton.addTarget(self, action: "handleTaskStatus:", forControlEvents: .TouchUpInside)
+        cell.checkButton.tag = indexPath.row
 
         return cell
     }
 
     func handleTaskStatus(sender: UIButton) {
-        sender.setImage(UIImage(named: "checked"), forState: .Normal)
+//        sender.setImage(UIImage(named: "checked"), forState: .Normal)
+        print(sender.tag)
+        let cell = tableView.cellForRowAtIndexPath( NSIndexPath(forRow: sender.tag, inSection: 0) ) as! TaskTableCell
+        print(cell.taskLabel.text)
+
+        let updateQuery = NSFetchRequest(entityName: "ToDo")
+            updateQuery.predicate = NSPredicate(format: "task = %@", cell.taskLabel.text!)
+        do {
+            let result = try moc.executeFetchRequest(updateQuery) as! [ToDo]
+
+            if result.count > 0 {
+                print(result[0])
+            }
+        } catch {
+            fatalError("Update fail : \(error)")
+        }
     }
 
     override func prefersStatusBarHidden() -> Bool {
