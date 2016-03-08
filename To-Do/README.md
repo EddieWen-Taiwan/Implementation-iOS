@@ -1,6 +1,6 @@
 ## Goutham
 ### ToDo List
 
-![screenshot](Screen shot.png)
+![screenshot](Screen Shot.png)
 
 source: <https://dribbble.com/shots/2451888-ToDo-List>
