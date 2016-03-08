@@ -29,6 +29,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         getAllTask()
 
         setTodayInfo()
+
+        // Add gesture
+        let longPress = UILongPressGestureRecognizer(target: self, action: "longPressOnTableView:")
+        tableView.addGestureRecognizer( longPress )
     }
 
     func getAllTask(add: Bool = false) {
@@ -114,6 +118,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     /***
+     *  Gesture
+    ***/
+
+    func longPressOnTableView(gestureRecognizer: UIGestureRecognizer) {
+        print("How long~~~~")
+    }
+
+    /***
      *   Today Info
     ***/
 
@@ -125,9 +137,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func setTodayInfo() {
         let today = NSDate()
         let calendar = NSCalendar.currentCalendar()
-        calendar.timeZone = NSTimeZone.localTimeZone()
+            calendar.timeZone = NSTimeZone.localTimeZone()
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy/MMM/dd/EEEE"
+            dateFormatter.dateFormat = "yyyy/MMM/dd/EEEE"
         let dateArray = dateFormatter.stringFromDate(today).characters.split{ $0 == "/" }.map(String.init)
 
         yearLabel.text = dateArray[0]
@@ -161,8 +173,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     func addNewTask( newTask: String ) {
         let todo = NSEntityDescription.insertNewObjectForEntityForName("ToDo", inManagedObjectContext: self.moc) as! ToDo
-        todo.task = newTask
-        todo.checked = false
+            todo.task = newTask
+            todo.checked = false
 
         do {
             try self.moc.save()
