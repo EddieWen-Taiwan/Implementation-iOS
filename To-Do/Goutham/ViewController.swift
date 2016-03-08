@@ -49,7 +49,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         newTaskController.addAction(ok)
         newTaskController.addAction(cancel)
-        newTaskController.addTextFieldWithConfigurationHandler{ (textField) -> Void in
+        newTaskController.addTextFieldWithConfigurationHandler{ textField -> Void in
             textField.placeholder = "Enter your next ToDo"
         }
         self.presentViewController(newTaskController, animated: true, completion: nil)
@@ -62,7 +62,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         do {
             try self.moc.save()
-            self.getAllTask()
+            getAllTask()
         } catch {
             fatalError("Failture : \(error)")
         }
@@ -72,7 +72,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.cellForRowAtIndexPath( NSIndexPath(forRow: sender.tag, inSection: 0) ) as! TaskTableCell
 
         let updateQuery = NSFetchRequest(entityName: "ToDo")
-        updateQuery.predicate = NSPredicate(format: "task = %@", cell.taskLabel.text!)
+            updateQuery.predicate = NSPredicate(format: "task = %@", cell.taskLabel.text!)
 
         do {
             let result = try moc.executeFetchRequest(updateQuery) as! [ToDo]
