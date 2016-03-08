@@ -11,13 +11,10 @@ import CoreData
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet var yearLabel: UILabel!
-    @IBOutlet var monthLabel: UILabel!
-    @IBOutlet var dateLabel: UILabel!
-    @IBOutlet var dayLabel: UILabel!
-
-    @IBOutlet var tableView: UITableView!
-    @IBOutlet var newTaskButton: UIButton!
+    /***
+     *  Core Data
+     *  TableView and Cell
+    ***/
 
     let moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     var taskList = [ToDo]()
@@ -32,20 +29,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         getAllTask()
 
         setTodayInfo()
-    }
 
-    func setTodayInfo() {
-        let today = NSDate()
-        let calendar = NSCalendar.currentCalendar()
-            calendar.timeZone = NSTimeZone.localTimeZone()
-        let dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "yyyy/MMM/dd/EEEE"
-        let dateArray = dateFormatter.stringFromDate(today).characters.split{ $0 == "/" }.map(String.init)
-
-        yearLabel.text = dateArray[0]
-        monthLabel.text = dateArray[1].uppercaseString
-        dateLabel.text = dateArray[2]
-        dayLabel.text = dateArray[3].uppercaseString
+        // Add gesture
+        let longPress = UILongPressGestureRecognizer(target: self, action: "longPressOnTableView:")
+        tableView.addGestureRecognizer( longPress )
     }
 
     func getAllTask(add: Bool = false) {
@@ -60,35 +47,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         } catch {
             fatalError("Oops! \(error)")
-        }
-    }
-
-    @IBAction func showNewTaskAlert(sender: AnyObject) {
-        let newTaskController = UIAlertController(title: "New Task", message: "Add a new to-do task", preferredStyle: .Alert)
-        let ok = UIAlertAction(title: "Ok", style: .Default, handler: { action -> Void in
-            if let textfield = newTaskController.textFields where textfield[0].text != "" {
-                self.addNewTask( textfield[0].text! )
-            }
-        })
-        let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-        newTaskController.addAction(ok)
-        newTaskController.addAction(cancel)
-        newTaskController.addTextFieldWithConfigurationHandler{ textField -> Void in
-            textField.placeholder = "Enter your next ToDo"
-        }
-        self.presentViewController(newTaskController, animated: true, completion: nil)
-    }
-
-    func addNewTask( newTask: String ) {
-        let todo = NSEntityDescription.insertNewObjectForEntityForName("ToDo", inManagedObjectContext: self.moc) as! ToDo
-            todo.task = newTask
-            todo.checked = false
-
-        do {
-            try self.moc.save()
-            getAllTask(true)
-        } catch {
-            fatalError("Failture : \(error)")
         }
     }
 
@@ -157,6 +115,143 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+
+    /***
+     *  Gesture
+    ***/
+
+    func longPressOnTableView(gestureRecognizer: UIGestureRecognizer) {
+        let longPress = gestureRecognizer as! UILongPressGestureRecognizer
+        let pressState = longPress.state
+        var locationPoint = longPress.locationInView(tableView)
+
+        struct My {
+            static var cellSnapshot: UIView? = nil
+            static var initialIndexPath: NSIndexPath? = nil
+        }
+
+        if let cellIndexPath = tableView.indexPathForRowAtPoint(locationPoint) {
+            switch pressState {
+            case UIGestureRecognizerState.Began:
+                My.initialIndexPath = cellIndexPath
+                let thisCell = tableView.cellForRowAtIndexPath(cellIndexPath) as UITableViewCell!
+                My.cellSnapshot = takeSnapshotOfCell(thisCell)
+                var center = thisCell.center
+                My.cellSnapshot?.center = center
+                My.cellSnapshot?.alpha = 0
+                tableView.addSubview( My.cellSnapshot! )
+                UIView.animateWithDuration( 0.25, animations: {
+                    center.y = locationPoint.y
+                    My.cellSnapshot!.center = center
+                    My.cellSnapshot!.transform = CGAffineTransformMakeScale(1.05, 1.05)
+                    My.cellSnapshot!.alpha = 0.98
+                    thisCell.alpha = 0.0
+                }, completion: { finished -> Void in
+                    if finished {
+                        thisCell.hidden = true
+                    }
+                })
+            case UIGestureRecognizerState.Changed:
+                My.cellSnapshot?.center.y = locationPoint.y
+                if cellIndexPath != My.initialIndexPath {
+                    swap( &taskList[cellIndexPath.row], &taskList[My.initialIndexPath!.row] )
+                    tableView.moveRowAtIndexPath(My.initialIndexPath!, toIndexPath: cellIndexPath)
+                    My.initialIndexPath = cellIndexPath
+                }
+            default:
+                let cell = tableView.cellForRowAtIndexPath(cellIndexPath) as! TaskTableCell
+                cell.hidden = false
+                cell.alpha = 0
+                UIView.animateWithDuration( 0.25, animations: {
+                    My.cellSnapshot?.center = cell.center
+                    My.cellSnapshot?.transform = CGAffineTransformIdentity
+                    My.cellSnapshot?.alpha = 0
+                    cell.alpha = 1
+                }, completion: { finish in
+                    if finish {
+                        My.initialIndexPath = nil
+                        My.cellSnapshot?.removeFromSuperview()
+                        My.cellSnapshot = nil
+                    }
+                })
+            }
+        }
+    }
+
+    func takeSnapshotOfCell(cellView: UIView) -> UIView {
+        UIGraphicsBeginImageContextWithOptions(cellView.bounds.size, false, 0.0)
+        cellView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext() as UIImage
+        UIGraphicsEndImageContext()
+
+        let cellSnapshot : UIView = UIImageView(image: image)
+            cellSnapshot.layer.masksToBounds = false
+            cellSnapshot.layer.cornerRadius = 0.0
+            cellSnapshot.layer.shadowOffset = CGSizeMake(-5.0, 0.0)
+            cellSnapshot.layer.shadowRadius = 5.0
+            cellSnapshot.layer.shadowOpacity = 0.4
+
+        return cellSnapshot
+    }
+
+    /***
+     *   Today Info
+    ***/
+
+    @IBOutlet var yearLabel: UILabel!
+    @IBOutlet var monthLabel: UILabel!
+    @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var dayLabel: UILabel!
+
+    func setTodayInfo() {
+        let today = NSDate()
+        let calendar = NSCalendar.currentCalendar()
+            calendar.timeZone = NSTimeZone.localTimeZone()
+        let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy/MMM/dd/EEEE"
+        let dateArray = dateFormatter.stringFromDate(today).characters.split{ $0 == "/" }.map(String.init)
+
+        yearLabel.text = dateArray[0]
+        monthLabel.text = dateArray[1].uppercaseString
+        dateLabel.text = dateArray[2]
+        dayLabel.text = dateArray[3].uppercaseString
+    }
+
+    /***
+     *  Add New ToDo Task
+    ***/
+
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var newTaskButton: UIButton!
+
+    @IBAction func showNewTaskAlert(sender: AnyObject) {
+        let newTaskController = UIAlertController(title: "New Task", message: "Add a new to-do task", preferredStyle: .Alert)
+        let ok = UIAlertAction(title: "Ok", style: .Default, handler: { action -> Void in
+            if let textfield = newTaskController.textFields where textfield[0].text != "" {
+                self.addNewTask( textfield[0].text! )
+            }
+        })
+        let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        newTaskController.addAction(ok)
+        newTaskController.addAction(cancel)
+        newTaskController.addTextFieldWithConfigurationHandler{ textField -> Void in
+            textField.placeholder = "Enter your next ToDo"
+        }
+        self.presentViewController(newTaskController, animated: true, completion: nil)
+    }
+
+    func addNewTask( newTask: String ) {
+        let todo = NSEntityDescription.insertNewObjectForEntityForName("ToDo", inManagedObjectContext: self.moc) as! ToDo
+            todo.task = newTask
+            todo.checked = false
+
+        do {
+            try self.moc.save()
+            getAllTask(true)
+        } catch {
+            fatalError("Failture : \(error)")
+        }
     }
 
 }
