@@ -138,8 +138,12 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="dateLabel" destination="07j-gh-nZZ" id="fHn-mp-ZbV"/>
+                        <outlet property="dayLabel" destination="Lfo-bH-2z2" id="xbU-kX-bo8"/>
+                        <outlet property="monthLabel" destination="67u-OI-Hpu" id="0Lw-CS-0bF"/>
                         <outlet property="newTaskButton" destination="Cy7-UN-5Gq" id="NCA-Ui-SJJ"/>
                         <outlet property="tableView" destination="N0C-wH-eqv" id="fqy-cr-H41"/>
+                        <outlet property="yearLabel" destination="Ev3-e8-JY0" id="CwY-yk-vCh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

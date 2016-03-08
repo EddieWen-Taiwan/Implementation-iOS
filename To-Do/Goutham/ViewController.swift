@@ -11,8 +11,12 @@ import CoreData
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet var yearLabel: UILabel!
+    @IBOutlet var monthLabel: UILabel!
+    @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var dayLabel: UILabel!
 
+    @IBOutlet var tableView: UITableView!
     @IBOutlet var newTaskButton: UIButton!
 
     let moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
@@ -26,6 +30,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         newTaskButton.layer.cornerRadius = 30
         getAllTask()
+
+        setTodayInfo()
+    }
+
+    func setTodayInfo() {
+        let today = NSDate()
+        let calendar = NSCalendar.currentCalendar()
+            calendar.timeZone = NSTimeZone.localTimeZone()
+        let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy/MMM/dd/EEEE"
+        let dateArray = dateFormatter.stringFromDate(today).characters.split{ $0 == "/" }.map(String.init)
+
+        yearLabel.text = dateArray[0]
+        monthLabel.text = dateArray[1].uppercaseString
+        dateLabel.text = dateArray[2]
+        dayLabel.text = dateArray[3].uppercaseString
     }
 
     func getAllTask() {
