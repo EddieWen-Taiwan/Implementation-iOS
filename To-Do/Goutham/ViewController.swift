@@ -48,12 +48,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         dayLabel.text = dateArray[3].uppercaseString
     }
 
-    func getAllTask() {
+    func getAllTask(add: Bool = false) {
         let query = NSFetchRequest(entityName: "ToDo")
 
         do {
             taskList = try moc.executeFetchRequest(query) as! [ToDo]
-            tableView.reloadData()
+            if add {
+                tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: taskList.count-1, inSection: 0)], withRowAnimation: .Right)
+            } else {
+                tableView.reloadData()
+            }
         } catch {
             fatalError("Oops! \(error)")
         }
@@ -82,7 +86,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         do {
             try self.moc.save()
-            getAllTask()
+            getAllTask(true)
         } catch {
             fatalError("Failture : \(error)")
         }
