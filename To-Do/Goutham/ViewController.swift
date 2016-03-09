@@ -60,8 +60,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let result = try moc.executeFetchRequest(updateQuery) as! [ToDo]
 
             if let result: ToDo = result[0] {
-                sender.setImage(UIImage(named: result.checked == true ? "unchecked" : "checked"), forState: .Normal)
                 result.checked = result.checked == true ? false : true
+                sender.setImage(UIImage(named: result.checked == true ? "checked" : "unchecked"), forState: .Normal)
+                cell.taskLabel.textColor = result.checked == true ? UIColor(red: 62/255, green: 67/255, blue: 79/255, alpha: 1) : UIColor(red: 189/255, green: 192/255, blue: 202/255, alpha: 1)
 
                 try moc.save()
             }
