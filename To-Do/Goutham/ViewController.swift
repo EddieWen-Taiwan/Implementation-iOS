@@ -146,7 +146,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 UIView.animateWithDuration( 0.25, animations: {
                     center.y = locationPoint.y
                     My.cellSnapshot!.center = center
-                    My.cellSnapshot!.transform = CGAffineTransformMakeScale(1.05, 1.05)
+//                    My.cellSnapshot!.transform = CGAffineTransformMakeScale(1.05, 1.05)
                     My.cellSnapshot!.alpha = 0.98
                     thisCell.alpha = 0.0
                 }, completion: { finished -> Void in
@@ -155,6 +155,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     }
                 })
             case UIGestureRecognizerState.Changed:
+                My.cellSnapshot?.center.x = locationPoint.x
                 My.cellSnapshot?.center.y = locationPoint.y
                 if cellIndexPath != My.initialIndexPath {
                     swap( &taskList[cellIndexPath.row], &taskList[My.initialIndexPath!.row] )
@@ -190,8 +191,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cellSnapshot : UIView = UIImageView(image: image)
             cellSnapshot.layer.masksToBounds = false
             cellSnapshot.layer.cornerRadius = 0.0
-            cellSnapshot.layer.shadowOffset = CGSizeMake(-5.0, 0.0)
-            cellSnapshot.layer.shadowRadius = 5.0
+            cellSnapshot.layer.shadowOffset = CGSizeMake(0, 0)
+            cellSnapshot.layer.shadowRadius = 3.0
             cellSnapshot.layer.shadowOpacity = 0.4
 
         return cellSnapshot
