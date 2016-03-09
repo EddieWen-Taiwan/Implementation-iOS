@@ -70,7 +70,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buy new sweetshirt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTk-8A-Il0">
-                                                    <rect key="frame" x="10" y="21" width="138" height="18"/>
+                                                    <rect key="frame" x="10" y="21" width="217" height="18"/>
                                                     <fontDescription key="fontDescription" name="ArialHebrew" family="Arial Hebrew" pointSize="16"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -85,6 +85,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="wPc-NJ-tVv" secondAttribute="trailing" constant="10" id="1D5-Hq-QRs"/>
+                                                <constraint firstItem="wPc-NJ-tVv" firstAttribute="leading" secondItem="ZTk-8A-Il0" secondAttribute="trailing" constant="5" id="I7l-M3-2nV"/>
                                                 <constraint firstItem="ZTk-8A-Il0" firstAttribute="leading" secondItem="PdI-Js-W07" secondAttribute="leading" constant="10" id="IPK-Xy-8pS"/>
                                                 <constraint firstItem="ZTk-8A-Il0" firstAttribute="centerY" secondItem="PdI-Js-W07" secondAttribute="centerY" id="V0C-CE-twC"/>
                                                 <constraint firstItem="wPc-NJ-tVv" firstAttribute="centerY" secondItem="PdI-Js-W07" secondAttribute="centerY" id="bNs-6w-frM"/>
