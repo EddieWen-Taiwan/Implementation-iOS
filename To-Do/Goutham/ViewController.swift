@@ -62,7 +62,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if let result: ToDo = result[0] {
                 result.checked = result.checked == true ? false : true
                 sender.setImage(UIImage(named: result.checked == true ? "checked" : "unchecked"), forState: .Normal)
-                cell.taskLabel.textColor = result.checked == true ? UIColor(red: 62/255, green: 67/255, blue: 79/255, alpha: 1) : UIColor(red: 189/255, green: 192/255, blue: 202/255, alpha: 1)
+                cell.taskLabel.textColor = result.checked == true ? UIColor(red: 189/255, green: 192/255, blue: 202/255, alpha: 1) : UIColor(red: 62/255, green: 67/255, blue: 79/255, alpha: 1)
 
                 try moc.save()
             }
@@ -100,7 +100,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath) as! TaskTableCell
 
-        cell.taskLabel.textColor = taskList[indexPath.row].checked == true ? UIColor(red: 62/255, green: 67/255, blue: 79/255, alpha: 1) : UIColor(red: 189/255, green: 192/255, blue: 202/255, alpha: 1)
+        cell.taskLabel.textColor = taskList[indexPath.row].checked == true ? UIColor(red: 189/255, green: 192/255, blue: 202/255, alpha: 1) : UIColor(red: 62/255, green: 67/255, blue: 79/255, alpha: 1)
         cell.taskLabel.text = taskList[indexPath.row].task
         cell.checkButton.setImage(UIImage(named: taskList[indexPath.row].checked == true ? "checked" : "unchecked"), forState: .Normal)
         cell.checkButton.addTarget(self, action: "handleTaskStatus:", forControlEvents: .TouchUpInside)
