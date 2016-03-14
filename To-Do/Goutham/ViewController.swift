@@ -131,11 +131,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         struct My {
             static var cellSnapshot: UIView? = nil
             static var initialIndexPath: NSIndexPath? = nil
+            static var lastLocation: CGPoint? = nil
         }
 
         if let cellIndexPath = tableView.indexPathForRowAtPoint(locationPoint) {
             switch pressState {
             case UIGestureRecognizerState.Began:
+                My.lastLocation = locationPoint
                 My.initialIndexPath = cellIndexPath
                 let thisCell = tableView.cellForRowAtIndexPath(cellIndexPath) as UITableViewCell!
                 My.cellSnapshot = takeSnapshotOfCell(thisCell)
@@ -146,17 +148,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 UIView.animateWithDuration( 0.25, animations: {
                     center.y = locationPoint.y
                     My.cellSnapshot!.center = center
-//                    My.cellSnapshot!.transform = CGAffineTransformMakeScale(1.05, 1.05)
-                    My.cellSnapshot!.alpha = 0.98
+                    My.cellSnapshot!.alpha = 0.95
                     thisCell.alpha = 0.0
                 }, completion: { finished -> Void in
-                    if finished {
-                        thisCell.hidden = true
-                    }
+                    thisCell.hidden = true
                 })
             case UIGestureRecognizerState.Changed:
-                My.cellSnapshot?.center.x = locationPoint.x
-                My.cellSnapshot?.center.y = locationPoint.y
+                My.cellSnapshot?.center.x += locationPoint.x - My.lastLocation!.x
+                My.cellSnapshot?.center.y += locationPoint.y - My.lastLocation!.y
+                My.lastLocation = locationPoint
                 if cellIndexPath != My.initialIndexPath {
                     swap( &taskList[cellIndexPath.row], &taskList[My.initialIndexPath!.row] )
                     tableView.moveRowAtIndexPath(My.initialIndexPath!, toIndexPath: cellIndexPath)
@@ -164,19 +164,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
             default:
                 let cell = tableView.cellForRowAtIndexPath(cellIndexPath) as! TaskTableCell
-                cell.hidden = false
-                cell.alpha = 0
+                    cell.hidden = false
+                    cell.alpha = 0
                 UIView.animateWithDuration( 0.25, animations: {
                     My.cellSnapshot?.center = cell.center
                     My.cellSnapshot?.transform = CGAffineTransformIdentity
                     My.cellSnapshot?.alpha = 0
                     cell.alpha = 1
                 }, completion: { finish in
-                    if finish {
-                        My.initialIndexPath = nil
-                        My.cellSnapshot?.removeFromSuperview()
-                        My.cellSnapshot = nil
-                    }
+                    My.initialIndexPath = nil
+                    My.cellSnapshot?.removeFromSuperview()
+                    My.cellSnapshot = nil
                 })
             }
         }
