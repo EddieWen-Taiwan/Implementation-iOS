@@ -161,6 +161,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     swap( &taskList[cellIndexPath.row], &taskList[My.initialIndexPath!.row] )
                     tableView.moveRowAtIndexPath(My.initialIndexPath!, toIndexPath: cellIndexPath)
                     My.initialIndexPath = cellIndexPath
+
+                    let query = NSFetchRequest(entityName: "ToDo")
+                    do {
+                        let result = try moc.executeFetchRequest(query) as! [ToDo]
+                        let tempTask = result[My.initialIndexPath!.row]
+                        moc.deleteObject(tempTask)
+                        let todo = NSEntityDescription.insertNewObjectForEntityForName("ToDo", inManagedObjectContext: self.moc) as! ToDo
+                        todo.task = tempTask.task
+                        todo.checked = tempTask.checked
+                        try moc.save()
+                    } catch {
+                        fatalError("Change failture: \(error)")
+                    }
                 }
             default:
                 let cell = tableView.cellForRowAtIndexPath(cellIndexPath) as! TaskTableCell
@@ -248,7 +261,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             todo.checked = false
 
         do {
-            try self.moc.save()
+            try moc.save()
             getAllTask(true)
         } catch {
             fatalError("Failture : \(error)")
